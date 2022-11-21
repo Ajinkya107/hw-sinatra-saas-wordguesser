@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/wordguesser_game.rb'
 
-class WordguesserApp < Sinatra::Base
+class WordGuesserApp < Sinatra::Base
 
   enable :sessions
   register Sinatra::Flash
