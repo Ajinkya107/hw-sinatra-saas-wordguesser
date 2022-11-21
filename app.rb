@@ -15,7 +15,7 @@ class WordguesserApp < Sinatra::Base
     session[:game] = @game
   end
 
-  # Good examples of Sinatra syntax may be found in these two routes.
+  # These two routes are good examples of Sinatra syntax
   # to help you with the rest of the assignment
   get '/' do
     redirect '/new'
@@ -26,17 +26,17 @@ class WordguesserApp < Sinatra::Base
   end
 
   post '/create' do
-    # NOTE: The autograder needs the next line, so do not change it!
+    # NOTE: don't change next line - it's needed by autograder!
     word = params[:word] || WordGuesserGame.get_random_word
-    # NOTE: The previous line must remain as it is for the autograder.
+    # NOTE: don't change previous line - it's needed by autograder!
 
     @game = WordGuesserGame.new(word)
     redirect '/show'
   end
 
-  # Process a guess using HangpersonGame's built-in techniques.
-  # # If a guess is made more than once, set flash[:message] to "You have used that letter already."
-  # # If a guess is incorrect, set flash[:message] to "Invalid prediction."
+  # Use existing methods in HangpersonGame to process a guess.
+  # If a guess is repeated, set flash[:message] to "You have already used that letter."
+  # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
     begin
       letter = params[:guess].to_s[0]
@@ -52,10 +52,10 @@ class WordguesserApp < Sinatra::Base
     redirect '/show'
   end
 
-  # We should ultimately arrive at this route after making several guesses.
+  # Everytime a guess is made, we should eventually end up at this route.
   # Use existing methods in WordguesserGame to check if player has
   # won, lost, or neither, and take the appropriate action.
-  # You should be aware that the show.erb template anticipates using instance variables.
+  # Notice that the show.erb template expects to use the instance variables
   # wrong_guesses and word_with_guesses from @game.
   get '/show' do
     case @game.check_win_or_lose

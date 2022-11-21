@@ -1,9 +1,9 @@
 class WordGuesserGame
 
-  # Here, add the required class methods, properties, etc.
-  # to enable the spec/hangperson game spec.rb tests to succeed.
+  # add the necessary class methods, attributes, etc. here
+  # to make the tests in spec/hangperson_game_spec.rb pass.
 
-  # Obtain a word via a remote "random word" service.
+  # Get a word from remote "random word" service
 
   def self.get_random_word
     require 'uri'
